@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "webfont";
+  font-display: swap;
+  //字体需要在线转换后下载文件再引用
+  src: url("./webfont/webfont.woff") format("woff");
+}
+
+body {
+  font-family: "webfont";
+  // background: blue;
+  background: url("./log.jpg") 200px 200px no-repeat;
+  div {
+    display: flex;
+    border: 1px red solid;
+  }
+}
+
+//less模块 处理less语法
+
+//less-loader模块 是webpack沟通less之前的桥梁
