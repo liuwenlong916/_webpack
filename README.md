@@ -123,3 +123,4 @@ npm i babel-loader @babel/core @babel/preset-env -D
 3. 生成文件过大，按需垫片, .babelrc 配置
 4. corejs 与 babel/polyfill 区别
 5. polyfill 本质就是引用 corejs 和 regenerator-runtime
+   entry:需要引用@babel/polyfill, usage:不需要 import,根据代码按需导入垫片,false:不会按需引入,
