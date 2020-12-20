@@ -2,11 +2,12 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin"); //src目录下html自动生成到dist并引入js、css等文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 //零配置
 module.exports = {
   // entry: "./src/index.js",
   entry: {
-    index: "./src/index/index.js",
+    index: "./src/index.js",
     // list: "./src/list.js",
     // detail: "./src/detail.js",
   },
@@ -101,17 +102,42 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.js$/,
+        loader: {
+          loader: "babel-loader",
+          options: {
+            // presets: ["@babel/preset-env"],
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  targets: {
+                    //browserslist写法
+                    chrome: "66",
+                    edge: "16",
+                  },
+                  corejs: 2, //推荐2默认引用2
+                  // corejs: 3, //3需要手动安装，3版本体积会变大
+                  useBuiltIns: "usage", // entry:需要引用@babel/polyfill, usage:不需要import,根据代码按需导入垫片,false:不会按需引入,
+                },
+              ],
+            ],
+          },
+        },
+      },
     ],
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: "./src/index/index.html",
+      template: "./src/index.html",
       filename: "index.html",
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
     new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(), //保留之前操作
   ],
   mode: "development", //dev production none
   devtool: "", //sourcemap开发环境默认开启//提升调试功能
@@ -122,6 +148,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     open: true,
+    hot: true, //开启HMR，css默认支持，js需要额外操作
+    hotOnly: true, //开启浏览器不刷新功能
     port: "8081",
     //跨域
     proxy: {
