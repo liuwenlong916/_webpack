@@ -57,6 +57,43 @@ plugin 功能拓展
 2. production
 3. none 插件都不启用
 
+## postcss
+
+1. 把 css 解析成 JS 可以操作的抽象语法树 AST，
+2. 调⽤插件来处理 AST 并得到结果；
+3. 所以 postcss ⼀般都是通过插件来处理 css，并不会直接处理
+4. ⽐如：⾃动补⻬浏览器前缀: autoprefixer;css 压缩等 cssnano
+
+### .browserslistrc
+
+不需要数组，引号等
+
+### postcss.config.js
+
+## mini-css-extract-plugin
+
+### MiniCssExtractPlugin.loader
+
+css 样式默认放入 head 标签内，css 文件抽离
+
+## 图片字体文件处理
+
+1. url-loader,功能包含 file-loader,limit 限制，小于则是 base64，大于生成文件
+2. file-loader
+3. iconfont,需要在线生成字体库
+
+## html-webpack-plugin
+
+1. 提取 html 文件模板，生成 HTML 文件，并自动引入 js 文件
+
+## clean-webpack-plugin
+
+1. dev 每次清空 dist 目录
+
+## sourceMap
+
+1. 默认开启,设置 [devtool](https://webpack.js.org/configuration/devtool):"none"关闭,
+
 ## 自定义 loader
 
 1. 实质：返回一个参数的方法。
@@ -64,8 +101,21 @@ plugin 功能拓展
 
 ## webpack-dev-server
 
-dist 没有输出文件
-dev 输出文件
+1. npm install webpack-dev-server@3.11.0 -D
+2. dist 没有输出文件
+3. dev 输出文件
+
+```javascript
+package.json
+"scripts": {
+"server": "webpack-dev-server"
+},
+```
+
+## mock 数据
+
+1. 使用 express 生成 node 服务器
+2. axios 调用
 
 # HRM 以模块为单位
 

@@ -2,6 +2,7 @@
 
 module.exports = {
   plugins: [
+    //自动补齐浏览器前缀
     require("autoprefixer")({
       overrideBrowserslist: ["last 2 versions", "> 1%"],
       //其他配置方法
@@ -9,6 +10,7 @@ module.exports = {
       //browserslist:[]
       //.browserslistrc
     }),
-    // require("cssnano"), //压缩生产使用
-  ], //自动补齐浏览器前缀
+    //压缩文件，生产环境使用
+    // require("cssnano"),
+  ],
 };
