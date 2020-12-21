@@ -1,5 +1,5 @@
 {
-  "name": "_webpack",
+  "name": "-webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "core-js": "^3.8.1"
+    "core-js": "^2.6.12"
   }
 }

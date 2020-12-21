@@ -119,7 +119,7 @@ module.exports = {
                   },
                   corejs: 2, //推荐2默认引用2
                   // corejs: 3, //3需要手动安装，3版本体积会变大
-                  useBuiltIns: "usage", // entry:需要引用@babel/polyfill, usage:不需要import,根据代码按需导入垫片,false:不会按需引入,
+                  useBuiltIns: "entry", // entry:需要引用@babel/polyfill, usage:不需要import,根据代码按需导入垫片,false:不会按需引入,
                 },
               ],
             ],
