@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1"
+        },
+        "corejs": 2, //推荐2默认引用2
+        // corejs: 3, //3需要手动安装，3版本体积会变大
+        "useBuiltIns": "entry" // entry:需要引用@babel/polyfill, usage:不需要import,根据代码按需导入垫片,false:不会按需引入,
+      }
+    ]
+    // "@babel/preset-react"
+  ]
+}
