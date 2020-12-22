@@ -2,6 +2,7 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin"); //src目录下html自动生成到dist并引入js、css等文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TxtWebpackPlugin = require("./myPlugins/text-webpack-plugin");
 const webpack = require("webpack");
 //零配置
 module.exports = {
@@ -139,6 +140,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(), //保留之前操作
+    new TxtWebpackPlugin({
+      name: "Tom",
+    }),
   ],
   mode: "development", //dev production none
   devtool: "", //sourcemap开发环境默认开启//提升调试功能

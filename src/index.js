@@ -26,11 +26,11 @@
 //   });
 // }
 
-import "@babel/polyfill"; //useBuildIns:'usage'不需要引入
-const arr = [new Promise(() => {}), new Promise(() => {})];
-arr.map(item => {
-  console.log(item);
-});
+// import "@babel/polyfill"; //useBuildIns:'usage'不需要引入
+// const arr = [new Promise(() => {}), new Promise(() => {})];
+// arr.map(item => {
+//   console.log(item);
+// });
 
 // import css from "./index.less";
 // console.log("hello webpack");
@@ -52,3 +52,28 @@ arr.map(item => {
 // axios.get("/api/info").then(res => {
 //   console.log(res); //res.data.name
 // });
+
+// //react
+// import React, { Component } from "react";
+// import ReactDom from "react-dom";
+// class App extends Component {
+//   render() {
+//     return <h1>hello world </h1>;
+//   }
+// }
+
+// ReactDom.render(<App />, document.getElementById("app"));
+
+// //webpack编译过程
+// const webpack = require("webpack");
+// const webpackConfig = require("../webpack.config.js");
+// const compiler = webpack(webpackConfig);
+
+// Object.keys(compiler.hooks).forEach(hookName => {
+//   compiler.hooks[hookName].tap("tom", () => {
+//     console.log(`run - ${hookName}`); //打印所有hook
+//   }); //触发钩子
+// });
+
+// compiler.run();
+console.log("hello webpack");

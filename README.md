@@ -173,4 +173,23 @@ npm i babel-loader @babel/core @babel/preset-env -D
 3. 生成文件过大，按需垫片, .babelrc 配置
 4. corejs 与 babel/polyfill 区别
 5. polyfill 本质就是引用 corejs 和 regenerator-runtime
-   entry:需要引用@babel/polyfill, usage:不需要 import,根据代码按需导入垫片,false:不会按需引入,
+6. useBuiltIns：entry:需要引用@babel/polyfill, usage:不需要 import,根据代码按需导入垫片,false:不会按需引入,
+
+## myPlugin
+
+1. webpack 编译代码过程中，生命周期概念，对应不通过打包阶段
+2. 不同打包阶段：modules,Assets
+
+#### plugin 本质是一个类。
+
+1. 如何注册到 webpack 对应阶段
+
+#### webpack 打包流程
+
+1. 读取配置，初始化工作 --- webpack.config.js
+2. 实例化一个 compiler 类，注册插件(Plugin),对应生命周期绑定相应事件
+3. 执行编译，compiler.run,
+4. compiler(构建阶段)->compilation(打包阶段)
+5. 递归处理所有依赖模块，生成 chunk
+6. 把 chunk 输出到 output 指定位置
+7. [hooks](https://webpack.docschina.org/api/compiler-hooks/#hooks)
