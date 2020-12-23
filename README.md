@@ -193,3 +193,25 @@ npm i babel-loader @babel/core @babel/preset-env -D
 5. 递归处理所有依赖模块，生成 chunk
 6. 把 chunk 输出到 output 指定位置
 7. [hooks](https://webpack.docschina.org/api/compiler-hooks/#hooks)
+
+# 手写 webpack
+
+1. 读取配置:
+   1. 入口
+   2. 出口
+2. 入口函数，run 开始编译->chunk
+   1. 从入口文件开始
+      1. 处理文件依赖
+         1. 进入依赖模块
+         2. 处理依赖模块的依赖
+         3. 依赖模块内容
+         4. 递归处理
+      2. 处理文件内容
+         1. 借助 babel 工具，内容编译成 ast 抽象语法树, 提取模块路径
+         2. 借助 babel 语法转义，特性需要 polyfile
+      3. chunk 包含依赖关系依赖图谱
+   2. 创建 bundle 文件
+      1. 依赖图谱
+      2. webpack 启动函数
+         1. require 补齐
+         2. exports 补齐，浏览器不报错
