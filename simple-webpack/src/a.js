@@ -1,1 +1,1 @@
-export const str = "mywebpack";
+export const a = "mywebpack";

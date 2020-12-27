@@ -210,8 +210,27 @@ npm i babel-loader @babel/core @babel/preset-env -D
          1. 借助 babel 工具，内容编译成 ast 抽象语法树, 提取模块路径
          2. 借助 babel 语法转义，特性需要 polyfile
       3. chunk 包含依赖关系依赖图谱
-   2. 创建 bundle 文件
-      1. 依赖图谱
-      2. webpack 启动函数
-         1. require 补齐
-         2. exports 补齐，浏览器不报错
+3. 创建 bundle 文件
+   1. 依赖图谱
+   2. webpack 启动函数
+      1. require 补齐
+      2. exports 补齐，浏览器不报错
+
+## parser
+
+1. npm i -D @babel/parser
+2. js 内容生成 AST
+
+## traverse
+
+1. npm i -D @babel/traverse
+2. 获取 ast 抽象语法树类型(import/function/string)
+
+## core
+
+1. npm i -D @babel/core
+2. transformFromAst 处理 ast 内容
+
+## preset-env
+
+1. npm i -D @babel/preset-env
