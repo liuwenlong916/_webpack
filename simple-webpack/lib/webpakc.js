@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const parser = require("@babel/parser"); //生成AST
-const travers = require("@babel/traverse").default; //.default看最后性能优化课
+//未设置libraryExport: "default"
+const travers = require("@babel/traverse").default;
 const { transformFromAst } = require("@babel/core");
 
 module.exports = class webpack {

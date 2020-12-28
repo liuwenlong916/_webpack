@@ -234,3 +234,5 @@ npm i babel-loader @babel/core @babel/preset-env -D
 ## preset-env
 
 1. npm i -D @babel/preset-env
+
+## npm 发布包
