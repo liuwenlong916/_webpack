@@ -6,4 +6,3 @@ dist/*.map
 dist/*.js
 dist/*.html
 .vscode
-package-lock.json

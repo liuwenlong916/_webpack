@@ -1,11 +1,16 @@
 const path = require("path");
-const htmlWebpackPlugin = require("html-webpack-plugin"); //src目录下html自动生成到dist并引入js、css等文件
+//根据模板文件(html)自动生成html页面到dist并引入js、css等打包的文件
+const htmlWebpackPlugin = require("html-webpack-plugin");
+//抽离css，替换style-loader(放入head)
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//每次打包清空dist目录,可以设置不清空文件
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+//自定义plugin
 const TxtWebpackPlugin = require("./myPlugins/text-webpack-plugin");
 const webpack = require("webpack");
 //零配置
 module.exports = {
+  //入口文件类型：string list obj
   // entry: "./src/index.js",
   entry: {
     index: "./src/index.js",
@@ -17,22 +22,28 @@ module.exports = {
     // filename: "index.js",
     filename: "[name].js", //多入口，文件名使用占位符。
   },
+  //默认去node_modules找loader，添加自定义loader路径
+  //为了require自定义plugin
   resolveLoader: {
-    modules: ["node_modules", "./myloaders"], //默认去node_modules找loader，添加自定义loader路径
+    modules: ["node_modules", "./myloaders"],
   },
+
+  //module等价于文件,根据文件类型，引用不同loader
   module: {
+    //多个loader自右向左调用
     rules: [
       {
         test: /\.css$/,
         //css-loader识别css代码，
         //style-loader css代码抽离出来，动态生成sstyle标签，插入到head， 再把css放进去，渲染页面样式
-        //多个loader自右向左
+
         use: ["style-loader", "css-loader"],
       },
       {
         test: /\.less$/,
-        //style-loader 写入html,postcss-loader->自动补齐浏览器前缀，配合borwserslist使用
+        //style-loader 写入html,
         // use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
+        //postcss-loader-> 进入postcss.config配置页-> (autoprefixer)自动补齐浏览器前缀，配合borwserslist使用
         //1.抽离css文件
         use: [
           MiniCssExtractPlugin.loader,
@@ -43,6 +54,7 @@ module.exports = {
         //2.自定义loader
         // use: ["kkb-style-loader", "kkb-css-loader", "kkb-less-loader"],
       },
+      //引用自定义loader，定义resolveLoader简写
       // {
       //   test: /\.js$/,
       //   //1.
@@ -79,7 +91,7 @@ module.exports = {
         use: [
           {
             // loader: "file-loader", //作用，复制src图片到dist目录
-            loader: "url-loader",
+            loader: "url-loader", //url内部会调用file-loader。
             options: {
               // name: "image/[name].[ext]",
               name: "[name].[ext]",
@@ -93,9 +105,10 @@ module.exports = {
         ],
       },
       {
+        //字体
         test: /\.(eot|woff|woff2|ttf)$/,
         use: {
-          loader: "file-loader",
+          loader: "file-loader", //url-loader
           options: {
             name: "[name].[ext]",
             outputPath: "font",
@@ -130,6 +143,7 @@ module.exports = {
       },
     ],
   },
+  //插件扩展webpack打包功能,抽离css、生成html页面......
   plugins: [
     new htmlWebpackPlugin({
       template: "./src/index.html",
@@ -150,6 +164,8 @@ module.exports = {
   //source-map 生成.map 打包前后文件映射关系
   //inline-source-map 映射关系放入打包文件最后一行
 
+  //webpack-dev-server
+  //开发阶段，方便调试，更改后页面立即更新，不需要每次打包
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     open: true,
