@@ -238,3 +238,6 @@ npm i babel-loader @babel/core @babel/preset-env -D
 ## npm 发布包
 
 ## test ssh
+
+1. C:\Windows\System32\drivers\etc\hosts
+2. 添加 13.229.188.59 github.com
