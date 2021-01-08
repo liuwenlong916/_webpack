@@ -236,3 +236,5 @@ npm i babel-loader @babel/core @babel/preset-env -D
 1. npm i -D @babel/preset-env
 
 ## npm 发布包
+
+## test ssh
