@@ -237,7 +237,11 @@ npm i babel-loader @babel/core @babel/preset-env -D
 
 ## npm 发布包
 
-## test ssh
+## ssh
 
-1. C:\Windows\System32\drivers\etc\hosts
-2. 添加 13.229.188.59 github.com
+1. 本地添加 ssh： ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+2. 启动 ssh-agent：eval "$(ssh-agent -s)" eval `ssh-agent -s`
+3. 添加到 ssh-agent: ssh-add ~/.ssh/id_ed25519
+4. 检查现有 ssh:ls -al ~/.ssh
+5. github:Settings->SSH and GPG keys->复制 key->Add SSH key
+6. 关闭警告： C:\Windows\System32\drivers\etc\hosts 添加 13.229.188.59 github.com
